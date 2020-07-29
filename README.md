@@ -1,1 +1,1 @@
-# Vakori.github.io
+permalink: /index.html
