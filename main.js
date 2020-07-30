@@ -169,7 +169,7 @@ class App {
             dateEl.innerText = `${timeString}`
             timeEl.innerText = `${dateString}`
             seriesEl.innerText = series.join(', ')
-            amountEl.innerText = amount + ((amount > 1) ? ' pcs.' : ' pc.')
+            amountEl.innerText = amount + ((amount > 1) ? ' шт' : ' шт')
             wagonNumberEl.innerText = "№" + wagon
 
             if (isBus) {
@@ -239,46 +239,6 @@ class PermanentStorage {
     }
 }
 
-class AppLock {
-    _hashes = [
-        2002114038,
-        -367436261,
-        809399193,
-        -909706894,
-        -896178118,
-        -896178117,
-        -896178116,
-        -896178115,
-        -896178114
-    ]
-
-    constructor() {
-        this._lockEl = document.getElementById('lock')
-        this._passwordEl = document.getElementById('password')
-        this._passwordEl.addEventListener('input', () => {
-            let isValid = this.checkPassword(this._passwordEl.value)
-            if(!isValid) return
-            this.unlock()
-            localStorage.setItem('password', this._passwordEl.value)
-            Utils.addUrlParameter({param: 'password', value: this._passwordEl.value})
-        })
-    }
-
-    checkPassword(password){
-        password = password || ''
-        let hash = password.hashCode()
-        return this._hashes.indexOf(hash) !== -1;
-    }
-
-    lock(){
-        this._lockEl.style.display = 'block'
-    }
-
-    unlock(){
-        this._lockEl.style.display = 'none'
-    }
-}
-
 // https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 String.prototype.hashCode = function() {
     let hash = 0, i, chr;
@@ -304,14 +264,3 @@ const Utils = {
         }
     }
 }
-
-let app = new App()
-app.initialize()
-
-const appLocker = new AppLock()
-let storedPassword = localStorage.getItem('password')
-if(!(storedPassword && appLocker.checkPassword(storedPassword))) {
-    appLocker.lock()
-}
-
-if(storedPassword) Utils.addUrlParameter({param: 'password', value: storedPassword})
