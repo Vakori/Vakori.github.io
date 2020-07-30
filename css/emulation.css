@@ -56,7 +56,7 @@
     color: grey;
 }
 #emulation .header__nav ul li.active {
-    color: #96e44b;
+    color: #7ebf3f;
 }
 #emulation .header__nav ul li.active::after {
     position: absolute;
