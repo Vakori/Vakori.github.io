@@ -264,3 +264,6 @@ const Utils = {
         }
     }
 }
+
+let app = new App()
+app.initialize()

@@ -28,7 +28,7 @@
     line-height: 1.8rem;
     font-weight: 700;
     margin: 0;
-    color: #5B9B21;
+    color: #98d45f;
 }
 
 #configuration .header__brand h1 small {
@@ -44,7 +44,7 @@
     top: 0;
     width: 8px;
     height: 100%;
-    background: #5B9B21;
+    background: #98d45f;
 }
 
 #configuration .header__logo {
